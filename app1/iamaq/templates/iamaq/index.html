@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+{% if questions_list %}
+    <ul>
+    {% for q in questions_list %}
+        <li><a href="/iamaq/{{ q.id }}/question">{{ q.question }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+</body>
+</html>
