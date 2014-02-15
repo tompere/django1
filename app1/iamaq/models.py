@@ -10,3 +10,9 @@ class IamaQ(models.Model):
     iama_permalink = models.CharField(max_length=500)
     def __str__(self):  # Python 3: def __str__(self):
         return self.question
+
+class IamaPeople(models.Model):
+    title = models.CharField(max_length=300)
+    whois = models.CharField(max_length=200)
+    def __str__(self):  # Python 3: def __str__(self):
+        return self.title

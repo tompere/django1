@@ -2,37 +2,20 @@
 <html>
 <head>
     {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'iamaq/main_grid.css' %}">
-    <meta name = "viewport" content="width=device-width, maximum-scale=1"> <!-- Kills text zoom in iOS. Media Queries manage font sizes -->
-    <link rel="stylesheet" href="{% static 'iamaq/main_grid.css?v=2' %}">
+    <script src="{% static 'iamaq/masonry.pkgd.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'iamaq/masonry.css' %}">
     <title>IAMAq</title>
 </head>
 <body>
-{% if questions_list %}
-{% for q in questions_list %}
-<a href="/iamaq/{{ q.id }}/question">
-    <div>
-        <h3>IAMA person</h3>
-        <p>{{ q.question }}</p>
-        <!--<small>diveintohtml5.ep.io/</small>-->
-    </div>
-</a>
+<div id="container" class="masonry js-masonry"
+     data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
+    {% if people %}
+    {% for p in people %}
+    <div class="item {{css_tags|random}}">{{ p.title }}</div>
 {% endfor %}
+    </div>
 {% else %}
 <p>No polls are available.</p>
 {% endif %}
-<!-- How this works
-<body> is the wrapper
-<a href=""> is your unit container, set the padding-bottom same as width to preserve the square
-<div> positions a unit's content inside the square
-<h3>Title</h3>
-<p>Words</p>
-<small>Small words</small>
-</div>
-</a>
-Rinse and repeat
-</body>
--->
-
 </body>
 </html>
